@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Register from './components/Register'
+import Books from './components/Books'
+// import SingleBook from './components/SingleBook'
 import bookLogo from './assets/books.png'
 
 function App() {
@@ -13,6 +16,9 @@ function App() {
       <p>You may need to use the `token` in this top-level component in other components that need to know if a user has logged in or not.</p>
 
       <p>Don't forget to set up React Router to navigate between the different views of your single page application!</p>
+    <Register/>
+    <Books/>
+      {/* <SingleBook/> */}
     </>
   )
 }
