@@ -1,5 +1,4 @@
 /* TODO - add your code to create a functional React component that renders a login form */
-
 import { useState } from "react";
 
 export default function SignUpForm( {setToken} ) {
@@ -12,7 +11,8 @@ export default function SignUpForm( {setToken} ) {
        e.preventDefault(); 
        try {
         const response = await fetch( 
-            "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login",
+            // "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login",
+            "https://unit3-bookbuddy-api.onrender.com/api/users/register",
             {
               method : "POST",  
               headers : {"Content-Type" : "application/json",},
@@ -32,3 +32,34 @@ export default function SignUpForm( {setToken} ) {
         setError(error.message)
        }
     }
+
+// < ---------------- EDIT FOR LOGIN FORM --------------->
+
+    return (
+        <>
+        <h2>Login</h2>
+      {successMessage && <p>{successMessage}</p>}
+      {error && <p>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <label>
+          Email:{" "}
+          <input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </label>
+        <label>
+          Password:{" "}
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => {
+            setPassword(e.target.value);
+            }}
+          />
+        </label>
+        <button>Submit</button>
+      </form>
+        </>
+    )
+}

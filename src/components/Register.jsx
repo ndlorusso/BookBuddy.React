@@ -1,5 +1,6 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
 import { useState } from "react";
+// import { handleSubmit } from "../API";
 
 export default function SignUpForm( {setToken} ) {
     const [email, setEmail] = useState("");
@@ -11,7 +12,8 @@ export default function SignUpForm( {setToken} ) {
        e.preventDefault(); 
        try {
         const response = await fetch( 
-            "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register",
+            // "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register",
+            "https://unit3-bookbuddy-api.onrender.com/api/users/register",
             {
               method : "POST",  
               headers : {"Content-Type" : "application/json",},
@@ -32,6 +34,8 @@ export default function SignUpForm( {setToken} ) {
        }
     }
 
+    // handleSubmit();
+
     return (
         <>
         <h2>Signup</h2>
@@ -39,7 +43,7 @@ export default function SignUpForm( {setToken} ) {
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>
-          Username:{" "}
+          Email:{" "}
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -62,3 +66,4 @@ export default function SignUpForm( {setToken} ) {
 }
 
 // < ------------- save token in local storage ------------>
+// send token for authenticated users
