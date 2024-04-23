@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import { fetchAllBooks } from "../API";
 import { useNavigate } from 'react-router-dom';
+import SingleBook from "./SingleBook";
+import '../index.css'
 // import { fetchSingleBook } from "../API"; - for button
 
 export default function AllBooks() {
@@ -29,15 +31,16 @@ export default function AllBooks() {
     return (
         <>
         <h3>ALL BOOKS - Component </h3>
-        <div key = "book-container">
+        <div key = "all-books-container">
             {booksToDisplay.map((book) => {
                 return (
                 <div key={book.id}>
                 <h3>{book.title}</h3>
-                <h4>{book.author}</h4>
+                {/* <h4>{book.author}</h4> */}
                 {/* <h4>{book.available}</h4> */}
-                <img src={book.coverimage} alt={book.title}/>
+                <img key = "book-image" src={book.coverimage} alt={book.title}/>
                 <button onClick={()=>{navigate(`/books/${book.id}`)}}>More info about "{book.title}"</button>
+                {/* IMPORT SINGLE BOOK FUNCTION FOR ONCLICK */}
                 </div> 
                 )})}
         </div>

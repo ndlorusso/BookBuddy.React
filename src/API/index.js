@@ -21,7 +21,7 @@ export async function fetchSingleBook(id) {
     }
 }
 
-// export async function handleSubmit(e) {
+// export async function handleRegister(e) {
 //     e.preventDefault(); 
 //     try {
 //      const response = await fetch( 
@@ -38,6 +38,31 @@ export async function fetchSingleBook(id) {
 //          const result = await response.json();
 //          console.log("Signup result", result);
 //          setToken(result.token);
+//          setSuccessMessage(result.message);
+//          setEmail("");
+//          setPassword("");
+//     } catch (error) {
+//      setError(error.message)
+//     }
+//  }
+
+// async function handleLogin(e) {
+//     e.preventDefault(); 
+//     try {
+//      const response = await fetch( 
+//         `${API}/users/login`,
+//          {
+//            method : "POST",  
+//            headers : {"Content-Type" : "application/json",},
+//            body : JSON.stringify({
+//                email,
+//                password,
+//              }),
+//          }
+//          );
+//          const result = await response.json();
+//          console.log("Signup result", result);
+//          // setToken(result.token);
 //          setSuccessMessage(result.message);
 //          setEmail("");
 //          setPassword("");

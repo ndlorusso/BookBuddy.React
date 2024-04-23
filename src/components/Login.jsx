@@ -7,12 +7,12 @@ export default function SignUpForm( {setToken} ) {
     const [successMessage, setSuccessMessage] = useState("");
     const [error, setError] = useState("");
 
-    async function handleSubmit(e) {
+    async function handleLogin(e) {
        e.preventDefault(); 
        try {
         const response = await fetch( 
             // "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login",
-            "https://unit3-bookbuddy-api.onrender.com/api/users/register",
+            "https://unit3-bookbuddy-api.onrender.com/api/users/login",
             {
               method : "POST",  
               headers : {"Content-Type" : "application/json",},
@@ -24,7 +24,7 @@ export default function SignUpForm( {setToken} ) {
             );
             const result = await response.json();
             console.log("Signup result", result);
-            setToken(result.token);
+            // setToken(result.token);
             setSuccessMessage(result.message);
             setEmail("");
             setPassword("");
@@ -40,7 +40,7 @@ export default function SignUpForm( {setToken} ) {
         <h2>Login</h2>
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <label>
           Email:{" "}
           <input

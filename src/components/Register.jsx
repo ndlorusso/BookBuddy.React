@@ -1,5 +1,6 @@
 /* TODO - add your code to create a functional React component that renders a registration form */
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 // import { handleSubmit } from "../API";
 
 export default function SignUpForm( {setToken} ) {
@@ -8,7 +9,7 @@ export default function SignUpForm( {setToken} ) {
     const [successMessage, setSuccessMessage] = useState("");
     const [error, setError] = useState("");
 
-    async function handleSubmit(e) {
+    async function handleRegister(e) {
        e.preventDefault(); 
        try {
         const response = await fetch( 
@@ -29,6 +30,7 @@ export default function SignUpForm( {setToken} ) {
             setSuccessMessage(result.message);
             setEmail("");
             setPassword("");
+            localStorage.setItem("token", result.token);
        } catch (error) {
         setError(error.message)
        }
@@ -41,7 +43,7 @@ export default function SignUpForm( {setToken} ) {
         <h2>Signup</h2>
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleRegister}>
         <label>
           Email:{" "}
           <input
@@ -67,3 +69,4 @@ export default function SignUpForm( {setToken} ) {
 
 // < ------------- save token in local storage ------------>
 // send token for authenticated users
+// localStorage.setItem("token", result.token);

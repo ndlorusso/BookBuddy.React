@@ -21,7 +21,6 @@ function App() {
       <p>Dont forget to set up React Router to navigate between the different views of your single page application!</p>
 
     <Routes>
-      <Route path="*" element={<App/>}/>
       <Route path="/register" element={<Register/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/books" element={<Books/>}/>
